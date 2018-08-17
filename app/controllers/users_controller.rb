@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def spotify
     @spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
 
-    playlist = spotify_user.create_playlist!('R&B 1980')
+    playlist = @spotify_user.create_playlist!('R&B 1980')
 
     songs_from_1980 = Song.all_from_year(year: 1980)
     songs_from_1980.map do |s|
