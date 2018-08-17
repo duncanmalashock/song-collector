@@ -1,7 +1,3 @@
-require 'Nokogiri'
-require 'rspotify'
-require 'HTTParty'
-
 class BillboardScraper
   def scrape_songs_for(date:)
     billboard_url = "https://www.billboard.com/charts/r-b-hip-hop-songs/"
