@@ -10,11 +10,11 @@ namespace :scrape do
       begin
       s.get_spotify_uri
       rescue RestClient::BadGateway => _
-        puts "502 from Spotify. Retrying in 60 seconds"
-        sleep 60
+        sleep_duration = 5
+        puts "502 from Spotify. Retrying in #{sleep_duration} seconds"
+        sleep sleep_duration
       end
       pp s
-      sleep 5
     end
   end
 end
