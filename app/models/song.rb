@@ -16,6 +16,14 @@ class Song < ApplicationRecord
     Song.where(:date_first_charted => Date.new(year,1,1).beginning_of_day..Date.new(year + 1,1,1).end_of_day)
   end
 
+  def get_spotify_uri
+    search_result = RSpotify::Track.search(self.to_query_string, limit: 1)
+    if search_result != [] then
+      self.spotify_uri = search_result[0].uri
+      self.save!
+    end
+  end
+
   def to_query_string
     "#{artist.name} #{self.title}"
   end
