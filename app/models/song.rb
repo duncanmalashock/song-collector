@@ -13,7 +13,7 @@ class Song < ApplicationRecord
   end
 
   def self.all_from_year(year:)
-    Song.where(:date_first_charted => Date.new(year,1,1).beginning_of_day..Date.new(year,1,1).end_of_day).count
+    Song.where(:date_first_charted => Date.new(year,1,1).beginning_of_day..Date.new(year + 1,1,1).end_of_day)
   end
 
   def to_query_string

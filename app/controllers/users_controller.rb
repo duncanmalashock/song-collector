@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     playlist = @spotify_user.create_playlist!('R&B 1980')
 
     songs_from_1980 = Song.all_from_year(year: 1980)
-    songs_from_1980.map do |s|
+    songs_from_1980.each do |s|
       search_result = RSpotify::Track.search(s.to_query_string, limit: 1)
       if search_result != [] then
         playlist.add_tracks! search_result
