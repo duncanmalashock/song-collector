@@ -10,6 +10,7 @@ class UsersController < ApplicationController
       if search_result != [] then
         playlist.add_tracks! search_result
       end
+      sleep 2
     end
   end
 end
