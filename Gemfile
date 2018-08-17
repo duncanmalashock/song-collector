@@ -30,8 +30,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 gem 'nokogiri'
-gem 'rspotify'
-gem 'httparty'
+gem 'rspotify', '~> 2.1.1'
+gem 'httparty', '~> 0.13.7'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

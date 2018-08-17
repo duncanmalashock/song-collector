@@ -189,7 +189,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.2)
-  httparty
+  httparty (~> 0.13.7)
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
@@ -197,7 +197,7 @@ DEPENDENCIES
   pg
   puma (~> 3.0)
   rails (~> 5.0.7)
-  rspotify
+  rspotify (~> 2.1.1)
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
