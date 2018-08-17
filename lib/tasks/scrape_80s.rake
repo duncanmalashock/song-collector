@@ -5,11 +5,14 @@ namespace :scrape do
   end
 
   task :populate_spotify_uris => :environment do |_, args|
-    start_date = Song.where.not(spotify_uri: [nil, ""]).order(date_first_charted: :desc).first.date_first_charted
-    songs_to_populate = Song.where(spotify_uri: [nil, ""])
-      .where('date_first_charted > ?', start_date)
+    songs_to_populate = Song.where(queried_spotify: false)
     songs_to_populate.each do |s|
+      begin
       s.get_spotify_uri
+      rescue RestClient::BadGateway => _
+        puts "502 from Spotify. Retrying in 60 seconds"
+        sleep 60
+      end
       pp s
       sleep 5
     end

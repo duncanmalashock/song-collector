@@ -20,8 +20,9 @@ class Song < ApplicationRecord
     search_result = RSpotify::Track.search(self.to_query_string, limit: 1)
     if search_result != [] then
       self.spotify_uri = search_result[0].uri
-      self.save!
     end
+    self.queried_spotify = true
+    self.save!
   end
 
   def to_query_string

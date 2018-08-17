@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180817055552) do
+ActiveRecord::Schema.define(version: 20180817174905) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,9 +25,10 @@ ActiveRecord::Schema.define(version: 20180817055552) do
     t.string   "title"
     t.datetime "date_first_charted"
     t.integer  "artist_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.string   "spotify_uri"
+    t.boolean  "queried_spotify",    default: false
     t.index ["artist_id"], name: "index_songs_on_artist_id", using: :btree
   end
 
