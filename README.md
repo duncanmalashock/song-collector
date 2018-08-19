@@ -19,7 +19,7 @@ This application scrapes that site for songs & artists, cross-references them wi
 
 ## Results ##
 
-Of the **4,814 unique songs** listed on the Billboard R&B charts, Spotify **returned matching URIs for 3,253 (67.57%)**. In 5 hours of casual listening, I've only found a few that were clearly the incorrect match.
+Of the **4,814 unique songs** listed on the Billboard R&B charts, Spotify **returned matching URIs for 3,253 (67.57%)**.
 
 The program generates one playlist per chart year, from 1980 to 1989:
 
