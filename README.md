@@ -96,7 +96,7 @@ Having logged in with Spotify, the server could provide a single-page applicatio
 #### Song discovery via other data sources ####
 
 Spotify data doesn't represent the people involved in the production of the music apart from the artist name. I think this is a huge missed opportunity, because it loses out on modeling the traditional crate-digging process of finding new music, i.e.:
-```
-"I like this song. The drumming is so good and the production is so tasteful. What record is it on? Oh, looks like Steve Gadd was the drummer and it was produced by Quincy Jones. What else have they worked on together?"
-```
+
+*"I like this song. The drumming is so good and the production is so tasteful. What record is it on? Oh, looks like Steve Gadd was the drummer and it was produced by Quincy Jones. What else have they worked on together?"*
+
 There are other sources for this data, like AllMusic and Discogs, but I haven't seen anything that allows you to look for music in those terms and then listen to them immediately on a streaming service. The simple integration between Billboard and Spotify that this application provides is a nice start. Features for discovering music through industry relationships could be a nice improvement.
