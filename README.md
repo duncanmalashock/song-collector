@@ -43,15 +43,15 @@ The program generates one playlist per chart year, from 1980 to 1989:
 
 Most of the work is done by two rake tasks:
 
-`scrape:eighties_rnb`: Calls down to [song-collector/app/services/billboard_scraper.rb](https://github.com/duncanmalashock/song-collector/blob/master/app/services/billboard_scraper.rb), which uses HTTParty and Nokogiri to scrape the artist names and song titles from the Billboard R&B/Hip-Hop charts, saving them as `Artist` and `Song` records.
+`scrape:eighties_rnb`: Calls down to [BillboardScraper#get_songs_between_years](https://github.com/duncanmalashock/song-collector/blob/master/app/services/billboard_scraper.rb), which uses HTTParty and Nokogiri to scrape the artist names and song titles from the Billboard R&B/Hip-Hop charts, saving them as `Artist` and `Song` records.
 
-`scrape:populate_spotify_uris`: Calls down to [Song.get_spotify_uri](https://github.com/duncanmalashock/song-collector/blob/master/app/models/song.rb#L19), which uses the RSpotify gem to search for the first match returned for each song title and artist name.
+`scrape:populate_spotify_uris`: Calls down to [Song#get_spotify_uri](https://github.com/duncanmalashock/song-collector/blob/master/app/models/song.rb#L19), which uses the RSpotify gem to search for the first match returned for each song title and artist name.
 
 ### Creating the playlists ###
 
 Playlists can be automatically created through a Spotify API call, but this requires authorizing with a user's account. This is why this project is a Rails app and not just a few Ruby scripts.
 
-The `/` route contains a Spotify OAuth link, which redirects to [users/spotify](https://github.com/duncanmalashock/song-collector/blob/master/app/controllers/users_controller.rb), where the `Users#spotify` controller action creates the playlists on the user's account.
+The `/` route contains a Spotify OAuth link, which redirects to `users/spotify`, where the [Users#spotify](https://github.com/duncanmalashock/song-collector/blob/master/app/controllers/users_controller.rb) controller action creates the playlists on the user's account.
 
 ## Further work ##
 
