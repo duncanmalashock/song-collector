@@ -73,7 +73,7 @@ Example:
 - Query string from Billboard data: `"Quincy Jones Ai No Corrida (I-No-Ko-ree-da)"` (returns nothing)
 - Query string: `"Quincy Jones Ai No Corrida"` (returns correct Spotify track)
 
-I think this could be corrected by more sophisticated searching that involved the constraint of searching only against a found artist's Spotify tracks.
+This could be corrected with slightly more sophisticated searching.
 
 #### Recover from API errors when creating playlists ####
 
