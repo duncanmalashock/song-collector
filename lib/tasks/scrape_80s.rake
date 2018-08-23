@@ -1,7 +1,17 @@
 namespace :scrape do
   desc "Scrape all Billboard charting RnB hits from 1980—1990 and store in db"
   task :eighties_rnb => :environment do |_, args|
-    BillboardScraper.new.get_songs_between_years(start_year: 1980, end_year: 1990)
+    BillboardScraper.new.get_songs_between_years(chart_url: "r-b-hip-hop-songs/",
+      start_year: 1980,
+      end_year: 1990
+    )
+  end
+
+  task :omaha => :environment do |_, args|
+    BillboardScraper.new.get_songs_between_years(chart_url: "hot-100/",
+      start_year: 1961,
+      end_year: 1963
+    )
   end
 
   task :populate_spotify_uris => :environment do |_, args|

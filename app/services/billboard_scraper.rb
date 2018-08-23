@@ -1,6 +1,6 @@
 class BillboardScraper
-  def scrape_songs_for(date:)
-    billboard_url = "https://www.billboard.com/charts/r-b-hip-hop-songs/"
+  def scrape_songs_for(chart_url:, date:)
+    billboard_url = "https://www.billboard.com/charts/#{chart_url}"
     response = HTTParty.get("#{billboard_url}#{date.strftime("%F")}",
       headers: {"User-Agent" => "Httparty"}
     )
@@ -25,12 +25,12 @@ class BillboardScraper
     number_created
   end
 
-  def get_songs_between_years(start_year:, end_year:)
+  def get_songs_between_years(chart_url:, start_year:, end_year:)
     dates = get_saturdays(start_year: start_year, end_year: end_year)
     puts "Scraping songs: #{dates.length} weeks total..."
     songs = dates.flat_map { |d|
       puts "  #{d}"
-      new_songs_created = BillboardScraper.new.scrape_songs_for(date:d)
+      new_songs_created = BillboardScraper.new.scrape_songs_for(chart_url: chart_url, date: d)
       puts "    #{new_songs_created} songs found"
       new_songs_created
     }
