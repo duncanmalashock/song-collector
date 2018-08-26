@@ -31,7 +31,7 @@ class BillboardScraper
     songs = dates.flat_map { |d|
       puts "  #{d}"
       new_songs_created = BillboardScraper.new.scrape_songs_for(chart_url: chart_url, date: d)
-      puts "    #{new_songs_created} songs found"
+      puts "    #{new_songs_created} new songs found"
       new_songs_created
     }
     puts "Finished!"

@@ -1,30 +1,16 @@
 namespace :scrape do
-  desc "Scrape all Billboard charting RnB hits from 1980—1990 and store in db"
-  task :eighties_rnb => :environment do |_, args|
+  desc "Scrape all Billboard charting RnB hits and store in db"
+  task :rnb => :environment do |t, args|
     BillboardScraper.new.get_songs_between_years(chart_url: "r-b-hip-hop-songs/",
-      start_year: 1980,
-      end_year: 1990
+      start_year: ENV['START_YEAR'].to_i,
+      end_year: ENV['END_YEAR'].to_i
     )
   end
 
-  task :omaha => :environment do |_, args|
+  task :hot_100 => :environment do |t, args|
     BillboardScraper.new.get_songs_between_years(chart_url: "hot-100/",
-      start_year: 1961,
-      end_year: 1963
+      start_year: ENV['START_YEAR'].to_i,
+      end_year: ENV['END_YEAR'].to_i
     )
-  end
-
-  task :populate_spotify_uris => :environment do |_, args|
-    songs_to_populate = Song.where(queried_spotify: false)
-    songs_to_populate.each do |s|
-      begin
-      s.get_spotify_uri
-      rescue RestClient::BadGateway => _
-        sleep_duration = 5
-        puts "502 from Spotify. Retrying in #{sleep_duration} seconds"
-        sleep sleep_duration
-      end
-      pp s
-    end
   end
 end
