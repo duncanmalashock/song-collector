@@ -37,6 +37,15 @@ class Song < ApplicationRecord
       else
         puts "Spotify API failed after #{attempts} attempts."
       end
+    rescue RestClient::GatewayTimeout => _
+      if attempts < MAX_ATTEMPTS then
+        sleep_duration = SLEEP_DURATION
+        puts "504 from Spotify. Retrying in #{sleep_duration} seconds"
+        sleep sleep_duration
+        get_spotify_uri(attempts: attempts + 1)
+      else
+        puts "Spotify API failed after #{attempts} attempts."
+      end
     end
   end
 
