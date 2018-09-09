@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     #   end
     # end
 
-    (1963..1964).map do |year|
+    (1960..1960).map do |year|
       song_uris = Song.all_from_year(year: year).map { |s| s.spotify_uri }
       playlist = @spotify_user.create_playlist!("Hot-100 #{year}")
       song_uris.compact.each_slice(100).to_a.each do |song_chunk|
